@@ -1,17 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 
-class Icecream(models.Model):
+class IceCream(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.IntegerField(max_length=4)
+    price = models.IntegerField(validators=[MinValueValidator(0)])
     def __str__(self):
         return self.name
 
 class Cup(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.IntegerField(max_length=4)
+    price = models.IntegerField(validators=[MinValueValidator(0)])
     def __str__(self):
         return self.name
 
@@ -19,8 +20,7 @@ class Cup(models.Model):
 class Topping(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.IntegerField(max_length=4)
-
+    price = models.IntegerField(validators=[MinValueValidator(0)])
     def __str__(self):
         return self.name
 
@@ -40,7 +40,7 @@ class Task(models.Model):
         blank=True
     )
     icecream = models.ForeignKey(
-        Icecream,
+        IceCream,
         on_delete=models.SET_NULL,
         null=True,
         blank=True

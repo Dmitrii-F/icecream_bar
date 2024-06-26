@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1>Топпинги</h1>
+    <ul>
+        {% for topping in toppings_list %}
+            <li>{{ topping.name }}, {{ topping.description }}, {{ topping.price }} руб.</li>
+        {% empty %}
+            <p>Нет топпингов.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

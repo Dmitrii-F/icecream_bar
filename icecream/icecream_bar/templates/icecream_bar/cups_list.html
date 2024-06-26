@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1>Стаканчики</h1>
+    <ul>
+        {% for cup in cups_list %}
+            <li>{{ cup.name }}, {{ cup.description }}, {{ cup.price }} руб.</li>
+        {% empty %}
+            <p>Нет стаканчиков.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

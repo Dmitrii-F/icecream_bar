@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1>Заказы</h1>
+    <ul>
+        {% for order in orders_list %}
+            <li>{{ order.order_id }}, {{ order.ice_cream }}, {{ order.cup }}, {{ order.topping }}, {{ order.created_at }}</li>
+        {% empty %}
+            <p>Нет заказов.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

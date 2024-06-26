@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+        <h1>Заглавная страница кафе</h1>
+        <a href="{% url 'icecream_bar:ice_creams' %}">Мороженое</a><br/>
+        <a href="{% url 'icecream_bar:cups' %}">Стаканчики</a><br/>
+        <a href="{% url 'icecream_bar:toppings' %}">Топпинги</a><br/>
+        <a href="{% url 'icecream_bar:order_create' %}">Сделать заказ</a><br/>
+        <a href="{% url 'icecream_bar:orders' %}">История заказов</a>
+{% endblock %}

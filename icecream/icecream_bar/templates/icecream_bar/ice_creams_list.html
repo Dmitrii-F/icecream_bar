@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1>Мороженое</h1>
+    <ul>
+        {% for ice_cream in ice_creams_list %}
+            <li>{{ ice_cream.name }}, {{ ice_cream.description }}, {{ ice_cream.price }} руб.</li>
+        {% empty %}
+            <p>Нет мороженого.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -26,11 +26,11 @@ class Topping(models.Model):
 
 
 
-class Task(models.Model):
-    # Кортеж из возможных статусов задачи
+class Order(models.Model):
+    # Кортеж из возможных статусов заказа
     STATUS_CHOICES = [
-        ('New', 'Новая'),
-        ('Completed', 'Завершена'),
+        ('New', 'Новый'),
+        ('Completed', 'Завершен'),
     ]
 
     cup = models.ForeignKey(
@@ -39,7 +39,7 @@ class Task(models.Model):
         null=True,
         blank=True
     )
-    icecream = models.ForeignKey(
+    ice_cream = models.ForeignKey(
         IceCream,
         on_delete=models.SET_NULL,
         null=True,
@@ -51,7 +51,7 @@ class Task(models.Model):
         null=True,
         blank=True
     )
-    task_id = models.IntegerField()
+    order_id = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(
@@ -61,13 +61,11 @@ class Task(models.Model):
     )
     assignee = models.ForeignKey(
         User,
-        related_name='tasks',
+        related_name='orders',
         on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
 
     def __str__(self):
-        return self.name
-
-
+        return str(self.order_id)

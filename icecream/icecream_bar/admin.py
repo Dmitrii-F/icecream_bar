@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from django.contrib import admin
-from .models import Cup, IceCream, Topping, Task
+from .models import Cup, IceCream, Topping, Order
 
 
 # Класс администратора для модели Project
@@ -20,12 +20,13 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description')
     ordering = ('name',)
 
-# Класс администратора для модели Task
-@admin.register(Task)
+# Класс администратора для модели Order
+@admin.register(Order)
 class TaskAdmin(admin.ModelAdmin):
-    #list_display = ('name', 'project', 'assignee', 'status', 'created_at', 'updated_at')
+    list_display = ('order_id', 'status', 'created_at')
     #list_filter = ('status', 'assignee', 'project')
-    search_fields = ('task_id', 'cup', 'ice_cream', 'topping', 'created_at')
-    #list_editable = ('status',  'assignee')
+    search_fields = ('order_id', 'cup', 'ice_cream', 'topping', 'created_at')
+    list_editable = ('status',)
     readonly_fields = ('created_at', 'updated_at')
+    date_hierarchy = 'created_at'
 

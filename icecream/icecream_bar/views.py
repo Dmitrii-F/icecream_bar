@@ -1,6 +1,6 @@
 from django.views import View
 from django.views.generic import ListView, CreateView
-from .models import IceCream, Cup, Topping, Order
+from .models import IceCream, Cup, Topping, Order, User
 from django.shortcuts import render, redirect
 from .forms import FeedbackForm, OrderForm
 from django.urls import reverse_lazy

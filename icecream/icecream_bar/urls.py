@@ -1,6 +1,5 @@
-from django.urls import path
+from django.urls import path, include
 from icecream_bar import views
-
 app_name = 'icecream_bar'
 
 urlpatterns = [
@@ -11,4 +10,5 @@ urlpatterns = [
     path('toppings/', views.ToppingsListView.as_view(), name='toppings'),
     path('orders/', views.OrdersListView.as_view(), name='orders'),
     path('orders/create/', views.OrderCreateView.as_view(), name='order_create'),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

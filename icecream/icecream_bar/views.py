@@ -35,6 +35,9 @@ def create_account(request):
         form = SignUpForm()
     return render(request, 'registration/create_account.html', {'form': form})
 
+def contacts(request):
+    return render(request, 'contacts/contacts.html')
+
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'icecream_bar/index.html')

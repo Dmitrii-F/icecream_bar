@@ -122,7 +122,7 @@ LOGIN_REDIRECT_URL = '/'
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "icecream_bar/static",
     "icecream_bar/static"
 ]
 

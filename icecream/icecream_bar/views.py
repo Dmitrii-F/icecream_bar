@@ -1,8 +1,9 @@
 from django.views import View
 from django.views.generic import ListView, CreateView
-from .models import IceCream, Cup, Topping, Order, User
+from .models import IceCream, Cup, Topping, Order, Profile
 from django.shortcuts import render, redirect
-from .forms import FeedbackForm, OrderForm
+from .forms import FeedbackForm, OrderForm, SignUpForm
+from django.contrib.auth import login, authenticate
 from django.urls import reverse_lazy
 
 def feedback_view(request):
@@ -14,6 +15,25 @@ def feedback_view(request):
     else:
         form = FeedbackForm()
     return render(request, 'icecream_bar/feedback.html', {'form': form})
+
+def create_account(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # Profile.objects.create(user=user,
+            #                        phone_number=form.cleaned_data.get('phone_number'),
+            #                        address=form.cleaned_data.get('address'))
+            Profile.user = user
+            Profile.address = form.cleaned_data.get('address')
+            Profile.phone_number = form.cleaned_data.get('phone_number')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return render(request, 'registration/account_created.html')
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/create_account.html', {'form': form})
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):

@@ -9,3 +9,18 @@
     height: 100%;
     object-fit: cover;
 }
+
+.bg {
+    background-image: url(image/background.jpg);
+    height: 700px;
+    position:relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.text{
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 0%;
+}

@@ -120,7 +120,13 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_DIRS = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "icecream_bar/static"
+]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

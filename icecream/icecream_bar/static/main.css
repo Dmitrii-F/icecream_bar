@@ -1,7 +1,6 @@
 .contact-info {
     font-size: 20px;
     margin: 20px;
-    white-space: nowrap;
 }
 
 .feedback_call-number {
@@ -20,7 +19,7 @@
     display: block;
 }
 
-.navbar-logo {
+.logo {
     background-size: 100%;
     width: 85px;
     height: 80px;
@@ -40,9 +39,26 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .text{
     color: white;
     text-align: center;
     padding: 30px;
     margin-top: 0%;
+}
+
+.map {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 45%; /* Увеличенное соотношение сторон для большей высоты */
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }

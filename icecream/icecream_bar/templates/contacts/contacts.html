@@ -1,11 +1,50 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<div class="row">
-    <h1>Контакты</h1>
-    <p>Наш магазин расположен по адресу: ул. 2-ая Бауманская, д. 1, г. Москва.</p>
-    <p>Телефон: +7 (123) 456-78-90</p>
-    <p>Электронная почта: info@example.com</p>
-    <p>Режим работы: Пн-Пт с 9:00 до 18:00</p>
+<div class="container">
+    <div class="contact-info">
+        <h1>Контакты</h1>
+        <b>«Liz'zard»</b> - это уютное кафе-мороженое, где каждый посетитель может насладиться разнообразными десертами и уникальной атмосферой
+    </div>
+
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-sm-8">
+            <div class="col">
+                <p>Наше кафе расположено по адресу: г. Москва, Красная площадь, Кремль</p>
+                <p>Режим работы: Пн-Пт с 9:00 до 18:00</p>
+            </div>
+            <div class="map">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af9307f8487dc79b3399ad9965d22fde8b571d4bda7daa9ba94c779bd33f0c2c6&amp;source=constructor" width="800" height="450" frameborder="0"></iframe>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <p>Если у Вас возникли вопросы, позвоните нам по телефону горячей линии:</p>
+            <span class="feedback_call-number">+7 (123) 456-78-90</span>
+            <span class="feedback_call-text">Горячая линия</span>
+            <span>Мы будем благодарны Вам, если вы оставите свой отзыв на </span>
+            <b>info@example.com</b>
+            <div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  Напишите нам
+                </button>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Связаться с нами</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <span>Напишите нам на </span>
+                          <b>info@example.com</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
 </div>
 {% endblock %}

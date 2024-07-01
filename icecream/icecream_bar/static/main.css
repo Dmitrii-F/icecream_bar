@@ -1,3 +1,25 @@
+.contact-info {
+    font-size: 20px;
+    margin: 20px;
+    white-space: nowrap;
+}
+
+.feedback_call-number {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.feedback_call-text {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 20px;
+    display: block;
+}
+
 .navbar-logo {
     background-size: 100%;
     width: 85px;

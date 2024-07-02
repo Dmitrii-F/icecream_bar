@@ -10,8 +10,8 @@ urlpatterns = [
     path('ice_creams/', views.IceCreamsListView.as_view(), name='ice_creams'),
     path('containers/', views.ContainersListView.as_view(), name='containers'),
     path('toppings/', views.ToppingsListView.as_view(), name='toppings'),
-    path('orders/', views.OrdersListView.as_view(), name='orders'),
-    path('orders/create/', views.OrderCreateView.as_view(), name='order_create'),
+    # path('orders/', views.OrdersListView.as_view(), name='orders'),
+    # path('orders/create/', views.OrderCreateView.as_view(), name='order_create'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('registration/', views.create_account, name='create_account'),
     path('contacts/', views.contacts, name='contacts')

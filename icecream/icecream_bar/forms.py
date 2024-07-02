@@ -1,34 +1,38 @@
 from django import forms
 from django.forms import ModelForm
-from .models import IceCream, Cup, Topping, Order
+from .models import IceCreamInContainer, Container, Topping, Order
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
 
 class FeedbackForm(forms.Form):
     name = forms.CharField(label='Ваше имя', max_length=100)
     email = forms.EmailField(label='Электронная почта')
     message = forms.CharField(widget=forms.Textarea, label='Сообщение')
 
+
 class IceCreamForm(ModelForm):
     class Meta:
-        model = IceCream
-        fields = ['name', 'description', 'price']
+        model = IceCreamInContainer
+        fields = ['container', 'flavors']
 
-class CupForm(ModelForm):
+
+class ContainerForm(ModelForm):
     class Meta:
-        model = Cup
-        fields = ['name', 'description', 'price']
+        model = Container
+        fields = ['name', 'description']
+
 
 class ToppingForm(ModelForm):
     class Meta:
         model = Topping
-        fields = ['name', 'description', 'price']
+        fields = ['name', 'description']
+
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['order_id', 'ice_cream', 'cup', 'topping', 'status']
-
+        fields = ['user', 'status']
 
 
 class SignUpForm(UserCreationForm):
@@ -48,6 +52,7 @@ class SignUpForm(UserCreationForm):
         help_text='Введите адрес для доставки',
         label='Адрес'
     )
+
     class Meta:
         model = User
         fields = ['username', 'phone_number', 'password1', 'password2', 'address']

@@ -6,6 +6,7 @@ class IceCream(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.IntegerField(validators=[MinValueValidator(0)])
+    image = models.ImageField(upload_to='IceCream/', blank=True) # Добвлять для изображения
     def __str__(self):
         return self.name
 
@@ -13,6 +14,7 @@ class Cup(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.IntegerField(validators=[MinValueValidator(0)])
+    image = models.ImageField(upload_to='Cup/', blank=True) # Добвлять для изображения
     def __str__(self):
         return self.name
 
@@ -21,6 +23,8 @@ class Topping(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.IntegerField(validators=[MinValueValidator(0)])
+    image = models.ImageField(upload_to='Topping/', blank=True) # Добвлять для изображения
+
     def __str__(self):
         return self.name
 

@@ -1,5 +1,7 @@
 from django.urls import path, include
 from icecream_bar import views
+from django.conf import settings
+from django.conf.urls.static import static
 app_name = 'icecream_bar'
 
 urlpatterns = [
@@ -14,3 +16,6 @@ urlpatterns = [
     path('registration/', views.create_account, name='create_account'),
     path('contacts/', views.contacts, name='contacts')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

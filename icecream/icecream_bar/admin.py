@@ -1,50 +1,51 @@
 from django.contrib import admin
 
 from django.contrib import admin
-from .models import Cup, IceCream, Topping, Order
-from django.utils.safestring import mark_safe
+from .models import (Flavor, Container, Topping, IceCreamInContainer, IceCreamAtStick, Drink, Item, Cart, Order)
 
 
-# Класс администратора для модели Project
-@admin.register(Cup)
-class ProjectAdmin(admin.ModelAdmin):
-    search_fields = ('name', 'description')
-    # Добвлять для изображения
-    readonly_fields = ('get_image',)
-    def get_image(self,obj):
-        return mark_safe(f'<img src={obj.image.url} width="80" height="100')
+@admin.register(Flavor)
+class FlavorAdmin(admin.ModelAdmin):
+    pass
 
-    get_image.short_description = "Изображение"
 
-@admin.register(IceCream)
-class ProjectAdmin(admin.ModelAdmin):
-    search_fields = ('name', 'description')
-    ordering = ('name',)
-    # Добвлять для изображения
-    readonly_fields = ('get_image',)
-    def get_image(self,obj):
-        return mark_safe(f'<img src={obj.image.url} width="80" height="100')
+@admin.register(Container)
+class ContainerAdmin(admin.ModelAdmin):
+    pass
 
-    get_image.short_description = "Изображение"
 
 @admin.register(Topping)
-class ProjectAdmin(admin.ModelAdmin):
-    search_fields = ('name', 'description')
-    ordering = ('name',)
-    # Добвлять для изображения
-    readonly_fields = ('get_image',)
-    def get_image(self,obj):
-        return mark_safe(f'<img src={obj.image.url} width="80" height="100')
+class ToppingAdmin(admin.ModelAdmin):
+    pass
 
-    get_image.short_description = "Изображение"
 
-# Класс администратора для модели Order
+@admin.register(IceCreamInContainer)
+class IceCreamInContainerAdmin(admin.ModelAdmin):
+    filter_horizontal = ('flavors', 'toppings')
+
+
+@admin.register(IceCreamAtStick)
+class IceCreamAtStickAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Drink)
+class DrinkAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        obj.calculate_total_price()
+
+
 @admin.register(Order)
-class TaskAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'status', 'created_at')
-    #list_filter = ('status', 'assignee', 'project')
-    search_fields = ('order_id', 'cup', 'ice_cream', 'topping', 'created_at')
-    list_editable = ('status',)
-    readonly_fields = ('created_at', 'updated_at')
-    date_hierarchy = 'created_at'
-
+class OrderAdmin(admin.ModelAdmin):
+    pass

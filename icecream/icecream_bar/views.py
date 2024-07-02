@@ -1,6 +1,6 @@
 from django.views import View
 from django.views.generic import ListView, CreateView
-from .models import IceCream, Cup, Topping, Order, Profile
+from .models import IceCreamInContainer, Container, Topping, Order, Profile
 from django.shortcuts import render, redirect
 from .forms import FeedbackForm, OrderForm, SignUpForm
 from django.contrib.auth import login, authenticate
@@ -43,14 +43,14 @@ class IndexView(View):
         return render(request, 'icecream_bar/index.html')
 
 class IceCreamsListView(ListView):
-    model = IceCream
+    model = IceCreamInContainer
     template_name = 'icecream_bar/ice_creams_list.html'
     context_object_name = 'ice_creams_list'
 
-class CupsListView(ListView):
-    model = Cup
-    template_name = 'icecream_bar/cups_list.html'
-    context_object_name = 'cups_list'
+class ContainersListView(ListView):
+    model = Container
+    template_name = 'icecream_bar/containers_list.html'
+    context_object_name = 'containers_list'
 
 class ToppingsListView(ListView):
     model = Topping

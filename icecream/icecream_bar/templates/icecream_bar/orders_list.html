@@ -6,7 +6,7 @@
         {% for order in orders_list %}
             <li>Номер заказа: {{ order.order_id }}, <br/>
                 Мороженое: {{ order.ice_cream }}, <br/>
-                Стаканчик: {{ order.cup }}, <br/>
+                Стаканчик: {{ order.container }}, <br/>
                 Топпинг: {{ order.topping }}, <br/>
                 Дата и время заказа: {{ order.created_at }} </li><br/>
         {% empty %}

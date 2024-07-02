@@ -3,8 +3,8 @@
 {% block content %}
     <h1>Стаканчики</h1>
     <ul>
-        {% for cup in cups_list %}
-            <li>{{ cup.name }}, {{ cup.description }}, {{ cup.price }} руб.</li>
+        {% for container in containers_list %}
+            <li>{{ container.name }}, {{ container.description }}, {{ container.price }} руб.</li>
         {% empty %}
             <p>Нет стаканчиков.</p>
         {% endfor %}

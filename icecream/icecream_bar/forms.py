@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import IceCreamInContainer, Container, Topping, Order
+from .models import IceCreamInContainer, Container, Topping
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -14,7 +14,7 @@ class FeedbackForm(forms.Form):
 class IceCreamForm(ModelForm):
     class Meta:
         model = IceCreamInContainer
-        fields = ['container', 'flavors']
+        fields = ['container', 'flavor1', 'flavor2', 'flavor3', 'topping']
 
 
 class ContainerForm(ModelForm):
@@ -29,10 +29,10 @@ class ToppingForm(ModelForm):
         fields = ['name', 'description']
 
 
-class OrderForm(forms.ModelForm):
-    class Meta:
-        model = Order
-        fields = ['user', 'status']
+# class OrderForm(forms.ModelForm):
+#     class Meta:
+#         model = Order
+#         fields = ['user', 'status']
 
 
 class SignUpForm(UserCreationForm):

@@ -1,40 +1,48 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-{% if form.errors %}
-  <p>Имя пользователя или пароль введены неверно.</p>
-{% endif %}
 
-{% if next %}
-  {% if user.is_authenticated %}
-    <p>Нет доступа к странице. Чтобы продолжить, пожалуйста, авторизуйтесь через аккаунт,
-    имеющий доступ.</p>
-  {% else %}
-    <p>Пожалуйста, авторизуйтесь, чтобы увидеть страницу</p>
-  {% endif %}
-{% endif %}
+<div class="container full-height">
+  <div class="d-flex justify-content-center align-items-center text-center h-100">
+    <div class="col-md-4">
+      <div class="contact-info text-center">
+        <h1>Вход</h1>
+      </div>
 
-<form method="post" action="{% url 'icecream_bar:login' %}">
-{% csrf_token %}
-<table>
+      {% if form.errors %}
+        <p class="text-danger">Имя пользователя или пароль введены неверно</p>
+      {% endif %}
 
-<tr>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
-</tr>
+      {% if next %}
+        {% if user.is_authenticated %}
+          <p class="text-danger">Нет доступа к странице. Чтобы продолжить, пожалуйста, авторизуйтесь через аккаунт, имеющий доступ.</p>
+        {% else %}
+          <p class="text-danger">Пожалуйста, авторизуйтесь, чтобы увидеть страницу</p>
+        {% endif %}
+      {% endif %}
 
-<tr>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</tr>
-</table>
+      <form method="post" action="{% url 'icecream_bar:login' %}">
+        {% csrf_token %}
 
-<input type="submit" value="Войти" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+        <label>Имя пользователя</label>
+        <div class="form-outline mb-4">
+          {{ form.username }}
+        </div>
 
-{# Assumes you setup the password_reset view in your URLconf #}
-<!--<p><a href="{% url 'icecream_bar:password_reset' %}">Забыли пароль?</a></p>-->
+        <label>{{ form.password.label }}</label>
+        <div class="form-outline mb-4">
+          {{ form.password }}
+        </div>
 
-<p>Нет аккаунта? <a href="{% url 'icecream_bar:create_account' %}">Зарегистрироваться</a></p>
+        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Войти</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+
+        <div class="text-center">
+          <p>Нет аккаунта? <a href="{% url 'icecream_bar:create_account' %}">Зарегистрироваться</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

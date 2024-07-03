@@ -20,15 +20,7 @@
 
             </div>
         </div>
-                        <!-- фон кафе -->
-        <div class="bg">
-          <div class="container">
-              <div class="text">
-                  <h1>Liz'zard cafe</h1>
-                  <a href="#" class="btn btn-primary"></a>
-              </div>
-          </div>
-
+      </div>
     </header>
     <main>
         {% block content %}
@@ -39,11 +31,10 @@
     <footer>
         <!-- Общий футер для всех страниц -->
         <div class="container text-center">
-        <div class="row">
-
-            <div class="col">
-                {% include 'base/footer.html' only with param='Django'%}
-
+            <div class="row">
+                <div class="col">
+                    {% include 'base/footer.html' only with param='Django'%}
+                </div>
             </div>
         </div>
     </footer>

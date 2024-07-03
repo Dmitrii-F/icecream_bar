@@ -1,12 +1,26 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <h1>Мороженое</h1>
-    <ul>
-        {% for ice_cream in ice_creams_list %}
-            <li>{{ ice_cream.name }}, {{ ice_cream.description }}, {{ ice_cream.price }} руб.</li>
-        {% empty %}
-            <p>Нет мороженого.</p>
-        {% endfor %}
-    </ul>
+
+    <div class="container text-center">
+        <h1>Вкусы мороженного</h1>
+
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {% for icecream in ice_creams_list %}
+            <div class="col">
+                <div class="card border-warning">
+                  <img src="{{icecream.image.url}}" class="card-img-top" >
+                  <div class="card-body">
+                    <h5 class="card-title">{{ icecream.name }}</h5>
+                    <p class="card-text">{{ icecream.description }}</p>
+                    <!--  <a href="#" class="btn btn-warning">Купить {{ icecream.price }} руб.</a>  -->
+                  </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Нет мороженного(.</p>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

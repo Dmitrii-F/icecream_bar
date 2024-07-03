@@ -36,8 +36,14 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<!--        здесь в чем-то проблема, не работает кусок кода-->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'icecream_bar:login' %}">Войти</a>
+          {% if user.is_authenticated %}
+            <p class="nav-link"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></p>
+          {% else %}
+            <p class="nav-link"><a href="{% url 'login' %}">Войти</a></p>
+          {% endif %}
+
       </ul>
     </div>
   </div>

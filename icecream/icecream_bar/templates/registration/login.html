@@ -9,19 +9,20 @@
         <h1>Вход</h1>
       </div>
 
-      {% if form.errors %}
-        <p class="text-danger">Имя пользователя или пароль введены неверно</p>
-      {% endif %}
+<!--        <div class="form-error">{{ form.non_field_errors }}</div>-->
+<!--      {% if form.errors %}-->
+<!--        <p class="text-danger">Имя пользователя или пароль введены неверно</p>-->
+<!--      {% endif %}-->
 
-      {% if next %}
-        {% if user.is_authenticated %}
-          <p class="text-danger">Нет доступа к странице. Чтобы продолжить, пожалуйста, авторизуйтесь через аккаунт, имеющий доступ.</p>
-        {% else %}
-          <p class="text-danger">Пожалуйста, авторизуйтесь, чтобы увидеть страницу</p>
-        {% endif %}
-      {% endif %}
+<!--      {% if next %}-->
+<!--        {% if user.is_authenticated %}-->
+<!--          <p class="text-danger">Нет доступа к странице. Чтобы продолжить, пожалуйста, авторизуйтесь через аккаунт, имеющий доступ.</p>-->
+<!--        {% else %}-->
+<!--          <p class="text-danger">Пожалуйста, авторизуйтесь, чтобы увидеть страницу</p>-->
+<!--        {% endif %}-->
+<!--      {% endif %}-->
 
-      <form method="post" action="{% url 'icecream_bar:login' %}">
+      <form method="post">
         {% csrf_token %}
 
         <label>Имя пользователя</label>
@@ -38,7 +39,7 @@
         <input type="hidden" name="next" value="{{ next }}" />
 
         <div class="text-center">
-          <p>Нет аккаунта? <a href="{% url 'icecream_bar:create_account' %}">Зарегистрироваться</a></p>
+          <p>Нет аккаунта? <a href="{% url 'create_account' %}">Зарегистрироваться</a></p>
         </div>
       </form>
     </div>

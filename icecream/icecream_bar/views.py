@@ -1,9 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.views.generic import ListView, CreateView
 from .models import IceCreamInContainer, Flavor, Container, Topping, Profile
 from django.shortcuts import render, redirect
 from .forms import FeedbackForm, SignUpForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse_lazy
 
 
@@ -36,6 +37,11 @@ def create_account(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/create_account.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')  # на главную страницу сайта
 
 
 def contacts(request):

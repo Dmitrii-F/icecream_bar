@@ -14,7 +14,9 @@
         <a href="/">Сделать заказ</a><br/>
         <a href="/">История заказов</a><br/>
         {% if user.is_authenticated %}
-            <li class="nav-link"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></li>
+            <li class="nav-link"> {{user.username}} |
+                <a href="{% url 'icecream_bar:profile' %}">Профиль</a> |
+                <a href="{% url 'logout' %}">Выйти</a></li>
           {% else %}
             <li class="nav-link"><a href="{% url 'login' %}">Войти</a></li>
         {% endif %}

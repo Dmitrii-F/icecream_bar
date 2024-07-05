@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, AnonymousUser
+from django.http import Http404
 from django.views import View
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, TemplateView, CreateView, DetailView
 from .models import IceCreamInContainer, Flavor, Container, Topping, Profile
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import FeedbackForm, SignUpForm
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse_lazy
@@ -27,9 +29,6 @@ def create_account(request):
             # Profile.objects.create(user=user,
             #                        phone_number=form.cleaned_data.get('phone_number'),
             #                        address=form.cleaned_data.get('address'))
-            Profile.user = user
-            Profile.address = form.cleaned_data.get('address')
-            Profile.phone_number = form.cleaned_data.get('phone_number')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
@@ -41,7 +40,34 @@ def create_account(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/')  # на главную страницу сайта
+    request.session.flush()
+    request.user = AnonymousUser
+    return redirect('icecream_bar:index')  # на главную страницу сайта
+
+
+# class ProfileDetailView(DetailView):
+#     model = User
+#     pk_url_kwarg = 'id'
+#     template_name = 'registration/profile.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = f'Страница пользователя: {self.object.user.username}'
+#         return context
+
+class UserProfileView(TemplateView):
+    template_name = 'registration/profile.html'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     try:
+    #         user = get_object_or_404(User, username=self.kwargs.get('username'))
+    #     except User.DoesNotExist:
+    #         raise Http404("Пользователь не найден")
+    #     context['user_profile'] = user
+    #     context['title'] = f'Профиль пользователя {user}'
+    #     return context
+
 
 
 def contacts(request):

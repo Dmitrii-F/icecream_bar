@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User, AnonymousUser
+from django.contrib.auth.models import User, AnonymousUser, Group
 from django.http import Http404
 from django.views import View
 from django.views.generic import ListView, TemplateView, CreateView, DetailView
@@ -31,6 +31,8 @@ def create_account(request):
             #                        address=form.cleaned_data.get('address'))
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
+            g = Group.objects.get(name='clients')
+            g.user_set.add(user)
             login(request, user)
             return render(request, 'registration/account_created.html')
     else:

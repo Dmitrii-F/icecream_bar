@@ -58,7 +58,7 @@ class IceCreamInContainer(models.Model):
     flavor2 = models.ForeignKey(Flavor, on_delete=models.CASCADE, related_name='flavor2', verbose_name='Вкус')
     flavor1 = models.ForeignKey(Flavor, on_delete=models.CASCADE, related_name='flavor1', verbose_name='Вкус')
     container = models.ForeignKey(Container, on_delete=models.CASCADE, verbose_name='Основа')
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    # price = models.DecimalField(max_digits=10, decimal_places=2)
     order_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

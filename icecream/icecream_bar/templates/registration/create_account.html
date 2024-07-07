@@ -2,13 +2,6 @@
 
 {% block content %}
 
-<h2>Регистрация</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Зарегистрироваться</button>
-  </form>
-
 <div class="container full-height">
   <div class="d-flex justify-content-center align-items-center">
     <div class="col-md-6">

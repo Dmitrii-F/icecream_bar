@@ -1,5 +1,5 @@
 from django.urls import path, include
-from icecream_bar import views
+from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 app_name = 'icecream_bar'

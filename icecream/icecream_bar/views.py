@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, AnonymousUser, Group
 from django.http import Http404
 from django.views import View
 from django.views.generic import ListView, TemplateView, CreateView, DetailView
-from .models import IceCreamInContainer, Flavor, Container, Topping, Profile
+from .models import IceCreamInContainer, Flavor, Container, Topping
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import FeedbackForm, SignUpForm, IceCreamInContainerForm
 from django.contrib.auth import login, authenticate, logout
@@ -71,7 +71,6 @@ class UserProfileView(TemplateView):
     #     return context
 
 
-
 def contacts(request):
     return render(request, 'contacts/contacts.html')
 
@@ -109,7 +108,11 @@ class OrderCreateView(CreateView):
     model = IceCreamInContainer
     form_class = IceCreamInContainerForm
     template_name = 'icecream_bar/order_create.html'
-    success_url = reverse_lazy('icecream_bar:index')
+    success_url = reverse_lazy('icecream_bar:orders')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
     def get_context_data(self):
         context = super(OrderCreateView, self).get_context_data()

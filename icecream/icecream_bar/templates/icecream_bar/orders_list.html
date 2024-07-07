@@ -4,13 +4,14 @@
     <h1>Заказы</h1>
     <ul>
         {% for order in orders_list %}
-            <li>Номер заказа: {{ order.icecreamincontainer_id }}, <br/>
-                Вкус: {{ order.flavor3 }}, <br/>
-                Вкус: {{ order.flavor2 }}, <br/>
-                Вкус: {{ order.flavor1 }}, <br/>
-                Стаканчик: {{ order.container }}, <br/>
-                Топпинг: {{ order.topping }}, <br/>
-                Дата и время заказа: {{ order.created_at }} </li><br/>
+            <li>Номер заказа: {{ order.id }}, <br>
+                Вкус: {{ order.flavor3 }}, <br>
+                Вкус: {{ order.flavor2 }}, <br>
+                Вкус: {{ order.flavor1 }}, <br>
+                Стаканчик: {{ order.container }}, <br>
+                Топпинг: {{ order.topping }}, <br>
+                Дата и время заказа: {{ order.ordered_at }} <br>
+                Пользователь: {{ order.user }} <br></li>
         {% empty %}
             <p>Нет заказов.</p>
         {% endfor %}

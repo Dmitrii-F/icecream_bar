@@ -52,7 +52,7 @@ class Topping(models.Model):
 
 
 class IceCreamInContainer(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     topping = models.ForeignKey(Topping, on_delete=models.CASCADE, verbose_name='Добавка')
     flavor3 = models.ForeignKey(Flavor, on_delete=models.CASCADE, related_name='flavor3', verbose_name='Вкус')
     flavor2 = models.ForeignKey(Flavor, on_delete=models.CASCADE, related_name='flavor2', verbose_name='Вкус')

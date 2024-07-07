@@ -2,10 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=15)
-    address = models.CharField(max_length=200)
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     phone_number = models.CharField(max_length=15)
+#     address = models.CharField(max_length=200)
 
 
 class Flavor(models.Model):
@@ -52,14 +52,14 @@ class Topping(models.Model):
 
 
 class IceCreamInContainer(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     topping = models.ForeignKey(Topping, on_delete=models.CASCADE, verbose_name='Добавка')
     flavor3 = models.ForeignKey(Flavor, on_delete=models.CASCADE, related_name='flavor3', verbose_name='Вкус')
     flavor2 = models.ForeignKey(Flavor, on_delete=models.CASCADE, related_name='flavor2', verbose_name='Вкус')
     flavor1 = models.ForeignKey(Flavor, on_delete=models.CASCADE, related_name='flavor1', verbose_name='Вкус')
     container = models.ForeignKey(Container, on_delete=models.CASCADE, verbose_name='Основа')
     # price = models.DecimalField(max_digits=10, decimal_places=2)
-    order_date = models.DateTimeField(auto_now_add=True)
+    ordered_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         flavors = self.flavor1.name + ', ' + self.flavor2.name + ', ' + self.flavor3.name

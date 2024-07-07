@@ -27,7 +27,7 @@
                             <div class="row row-cols-1 row-cols-md-4 g-4">
                                 {% for topping in toppings_list %}
                                 <div class="col">
-                                    <div class="card border-primary h-100 ">
+                                    <div class="card border-primary border-opacity-50 h-100 ">
                                       <img src="{{topping.image.url}}" class="card-img-top" >
                                       <div class="card-body">
                                         <h5 class="card-title">{{ topping.name }}</h5>
@@ -53,7 +53,7 @@
                              <div class="row row-cols-1 row-cols-md-4 g-4">
                                 {% for icecream in ice_creams_list %}
                                 <div class="col">
-                                    <div class="card border-primary h-100 px-2 pt-1">
+                                    <div class="card border-primary border-opacity-50 h-100 px-2 pt-1">
                                       <img src="{{icecream.image.url}}" class="card-img-top">
                                       <div class="card-body">
                                         <h5 class="card-title">{{ icecream.name }}</h5>
@@ -80,7 +80,7 @@
                              <div class="row row-cols-1 row-cols-md-4 g-4">
                                 {% for container in containers_list %}
                                 <div class="col">
-                                    <div class="card border-primary h-100 pt-1">
+                                    <div class="card border-primary border-opacity-50 h-100 pt-1">
                                       <img src="{{container.image.url}}" class="card-img-top" >
                                       <div class="card-body">
                                         <h5 class="card-title">{{ container.name }}</h5>

@@ -1,19 +1,23 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <h1>Заказы</h1>
-    <ul>
-        {% for order in orders_list %}
-            <li>Номер заказа: {{ order.id }}, <br>
-                Вкус: {{ order.flavor3 }}, <br>
-                Вкус: {{ order.flavor2 }}, <br>
-                Вкус: {{ order.flavor1 }}, <br>
-                Стаканчик: {{ order.container }}, <br>
-                Топпинг: {{ order.topping }}, <br>
-                Дата и время заказа: {{ order.ordered_at }} <br>
-                Пользователь: {{ order.user }} <br></li>
-        {% empty %}
-            <p>Нет заказов.</p>
-        {% endfor %}
-    </ul>
+{% for group in request.user.groups.all %}
+    {% if group.name == 'clients' %}
+        <h1>История заказов</h1>
+        <ul>
+            {% for order in orders_list %}
+                <li>Номер заказа: {{ order.id }}, <br>
+                    Вкус: {{ order.flavor3 }}, <br>
+                    Вкус: {{ order.flavor2 }}, <br>
+                    Вкус: {{ order.flavor1 }}, <br>
+                    Стаканчик: {{ order.container }}, <br>
+                    Топпинг: {{ order.topping }}, <br>
+                    Дата и время заказа: {{ order.ordered_at }} </li><br>
+                    Пользователь: {{ order.user }} <br></li>
+            {% empty %}
+                    <p>Нет заказов.</p>
+            {% endfor %}
+            </ul>
+    {% endif %}
+{% endfor %}
 {% endblock %}

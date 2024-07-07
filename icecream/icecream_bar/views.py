@@ -47,16 +47,6 @@ def logout_view(request):
     return redirect('icecream_bar:index')  # на главную страницу сайта
 
 
-# class ProfileDetailView(DetailView):
-#     model = User
-#     pk_url_kwarg = 'id'
-#     template_name = 'registration/profile.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = f'Страница пользователя: {self.object.user.username}'
-#         return context
-
 class UserProfileView(TemplateView):
     template_name = 'registration/profile.html'
 
@@ -69,7 +59,6 @@ class UserProfileView(TemplateView):
     #     context['user_profile'] = user
     #     context['title'] = f'Профиль пользователя {user}'
     #     return context
-
 
 
 def contacts(request):

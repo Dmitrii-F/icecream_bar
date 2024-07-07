@@ -110,3 +110,10 @@ class OrderCreateView(CreateView):
     form_class = IceCreamInContainerForm
     template_name = 'icecream_bar/order_create.html'
     success_url = reverse_lazy('icecream_bar:index')
+
+    def get_context_data(self):
+        context = super(OrderCreateView, self).get_context_data()
+        context['toppings_list'] = Topping.objects.all()
+        context['ice_creams_list'] = Flavor.objects.all()
+        context['containers_list'] = Container.objects.all()
+        return context

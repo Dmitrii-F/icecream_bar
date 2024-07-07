@@ -11,10 +11,10 @@ class FeedbackForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea, label='Сообщение')
 
 
-class IceCreamForm(ModelForm):
+class IceCreamInContainerForm(ModelForm):
     class Meta:
         model = IceCreamInContainer
-        fields = ['container', 'flavor1', 'flavor2', 'flavor3', 'topping']
+        fields = ['topping', 'flavor3', 'flavor2', 'flavor1', 'container']
 
 
 class ContainerForm(ModelForm):

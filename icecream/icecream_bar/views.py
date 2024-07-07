@@ -5,7 +5,7 @@ from django.views import View
 from django.views.generic import ListView, TemplateView, CreateView, DetailView
 from .models import IceCreamInContainer, Flavor, Container, Topping, Profile
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import FeedbackForm, SignUpForm
+from .forms import FeedbackForm, SignUpForm, IceCreamInContainerForm
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse_lazy
 
@@ -98,13 +98,22 @@ class ToppingsListView(ListView):
     template_name = 'icecream_bar/toppings_list.html'
     context_object_name = 'toppings_list'
 
-# class OrdersListView(ListView):
-#     model = Order
-#     template_name = 'icecream_bar/orders_list.html'
-#     context_object_name = 'orders_list'
-#
-# class OrderCreateView(CreateView):
-#     model = Order
-#     form_class = OrderForm
-#     template_name = 'icecream_bar/order_create.html'
-#     success_url = reverse_lazy('icecream_bar:index')
+
+class OrdersListView(ListView):
+    model = IceCreamInContainer
+    template_name = 'icecream_bar/orders_list.html'
+    context_object_name = 'orders_list'
+
+
+class OrderCreateView(CreateView):
+    model = IceCreamInContainer
+    form_class = IceCreamInContainerForm
+    template_name = 'icecream_bar/order_create.html'
+    success_url = reverse_lazy('icecream_bar:index')
+
+    def get_context_data(self):
+        context = super(OrderCreateView, self).get_context_data()
+        context['toppings_list'] = Topping.objects.all()
+        context['ice_creams_list'] = Flavor.objects.all()
+        context['containers_list'] = Container.objects.all()
+        return context

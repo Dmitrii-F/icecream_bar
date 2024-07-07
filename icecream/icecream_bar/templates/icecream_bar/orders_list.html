@@ -4,8 +4,10 @@
     <h1>Заказы</h1>
     <ul>
         {% for order in orders_list %}
-            <li>Номер заказа: {{ order.order_id }}, <br/>
-                Мороженое: {{ order.ice_cream }}, <br/>
+            <li>Номер заказа: {{ order.icecreamincontainer_id }}, <br/>
+                Вкус: {{ order.flavor3 }}, <br/>
+                Вкус: {{ order.flavor2 }}, <br/>
+                Вкус: {{ order.flavor1 }}, <br/>
                 Стаканчик: {{ order.container }}, <br/>
                 Топпинг: {{ order.topping }}, <br/>
                 Дата и время заказа: {{ order.created_at }} </li><br/>

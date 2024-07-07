@@ -33,7 +33,7 @@
 
 .bg {
     background-image: url(image/background_pink.png);
-    height: 700px;
+    height: 600px;
     position:relative;
     background-position: center;
     background-repeat: no-repeat;
@@ -72,5 +72,11 @@
 }
 
 .color-navbar {
-    background-color: #4D6873;
+    background-color: 	#ffe0bd;
+}
+
+.example {
+
+background-color: rgb(255, 122, 89);
+
 }

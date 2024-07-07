@@ -9,4 +9,58 @@
     <button type="submit">Зарегистрироваться</button>
   </form>
 
+<div class="container full-height">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="contact-info text-center">
+        <h1>Регистрация</h1>
+      </div>
+        <form method="post">
+          {% csrf_token %}
+
+          <div class="row">
+            <div class="col">
+              <div data-mdb-input-init class="form-outline mb-4">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+              </div>
+            </div>
+            <div class="col">
+              <div data-mdb-input-init class="form-outline mb-4">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name}}
+              </div>
+            </div>
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+          </div>
+
+          <div data-mdb-input-init class="form-outline mb-4">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+          </div>
+
+          <div data-mdb-input-init class="form-outline mb-4">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+          </div>
+
+          <div data-mdb-input-init class="form-outline mb-4">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Зарегистрироваться</button>
+          </div>
+
+          <p class="text-center text-muted mt-2 mb-0">Уже есть аккаунт? <a href="{% url 'login' %}" class="fw-bold text-body"><u>Войти здесь</u></a></p>
+        </form>
+    </div>
+  </div>
+</div>
+
+
 {% endblock %}

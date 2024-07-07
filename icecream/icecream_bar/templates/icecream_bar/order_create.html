@@ -5,12 +5,14 @@
 <div class="container text-center mb-3">
     <h2><br>Сделать заказ<br><br></h2>
     <div class="row">
-        <div class="col-lg col-md-6">
+        <div class="col-lg col-md-6 color-order">
+            <p><br></p>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Сохранить</button>
             </form>
+            <p><br></p>
         </div>
         <div class="col-lg-8 col-md-6">
             <div class="accordion" id="accordionFlushExample">

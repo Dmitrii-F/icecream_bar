@@ -75,8 +75,10 @@
     background-color: 	#ffe0bd;
 }
 
-.example {
+.color-index {
+    background-color: 	#d6f5ff;
+}
 
-background-color: rgb(255, 122, 89);
-
+.accordion{
+    --bs-accordion-btn-bg: #fad1c8;
 }

@@ -16,6 +16,7 @@
             <p><a href="{% url 'icecream_bar:all_orders' %}">Посмотреть все заказы пользователей</a></p>
         {% endif %}
     {% endfor %}
+    <p><a href="{% url 'icecream_bar:change_profile' %}">Изменить аккаунт</a></p>
     <a href="{% url 'logout' %}">Выйти из профиля</a>
 
 {% endblock %}

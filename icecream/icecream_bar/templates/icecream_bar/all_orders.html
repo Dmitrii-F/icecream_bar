@@ -2,7 +2,7 @@
 
 {% block content %}
 {% for group in request.user.groups.all %}
-    {% if group.name == 'clients' %}
+    {% if group.name == 'admins' %}
         <h1>История заказов</h1>
         <ul>
             {% for order in orders_list %}
@@ -13,7 +13,7 @@
                     Стаканчик: {{ order.container }}, <br>
                     Топпинг: {{ order.topping }}, <br>
                     Дата и время заказа: {{ order.ordered_at }} <br>
-                    Пользователь: {{ order.user.first_name }} {{ order.user.last_name }} <br></li>
+                    Пользователь:{{ order.user.first_name }} {{ order.user.last_name }} <br></li>
             {% empty %}
                     <p>Нет заказов.</p>
             {% endfor %}

@@ -98,10 +98,24 @@ class ToppingsListView(ListView):
     context_object_name = 'toppings_list'
 
 
+class AllOrdersListView(ListView):
+    model = IceCreamInContainer
+    template_name = 'icecream_bar/all_orders.html'
+
+    def get_context_data(self):
+        context = super(AllOrdersListView, self).get_context_data()
+        context['orders_list'] = IceCreamInContainer.objects.all()
+        return context
+
+
 class OrdersListView(ListView):
     model = IceCreamInContainer
     template_name = 'icecream_bar/orders_list.html'
-    context_object_name = 'orders_list'
+
+    def get_context_data(self):
+        context = super(OrdersListView, self).get_context_data()
+        context['orders_list'] = IceCreamInContainer.objects.filter(user=self.request.user)
+        return context
 
 
 class OrderCreateView(CreateView):

@@ -100,7 +100,13 @@
     </div>
     </div>
 {% else %}
-    <p>Для совершения заказа необходимо войти в профиль</p>
-    <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'create_account' %}">Зарегистрироваться</a></p>
+    <div class="container full-height">
+      <div class="d-flex justify-content-center align-items-center text-center h-75">
+        <div class="col-md-6">
+            <h2>Для совершения заказа необходимо войти в профиль</h2>
+            <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'create_account' %}">Зарегистрироваться</a></p>
+        </div>
+      </div>
+    </div>
 {% endif %}
 {% endblock %}

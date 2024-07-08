@@ -11,10 +11,12 @@ urlpatterns = [
     path('containers/', views.ContainersListView.as_view(), name='containers'),
     path('toppings/', views.ToppingsListView.as_view(), name='toppings'),
     path('orders/', views.OrdersListView.as_view(), name='orders'),
+    path('all_orders/', views.AllOrdersListView.as_view(), name='all_orders'),
     path('orders/create/', views.OrderCreateView.as_view(), name='order_create'),
     # path('accounts/', include('django.contrib.auth.urls')),
     # path('registration/', views.create_account, name='create_account'),
     path('profile/', views.UserProfileView.as_view(), name='profile'),
+    path('profile/change_profile', views.UserSettingsView.as_view(), name='change_profile'),
     path('contacts/', views.contacts, name='contacts')
 ]
 

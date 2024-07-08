@@ -1,11 +1,13 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User, AnonymousUser, Group
-from django.http import Http404
+from django.core.checks import messages
+from django.http import Http404, HttpResponseForbidden
 from django.views import View
 from django.views.generic import ListView, TemplateView, CreateView, DetailView
 from .models import IceCreamInContainer, Flavor, Container, Topping
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import FeedbackForm, SignUpForm, IceCreamInContainerForm
+from .forms import FeedbackForm, SignUpForm, IceCreamInContainerForm, UserInfoForm, UserPasswordForm
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse_lazy
 
@@ -45,6 +47,41 @@ def logout_view(request):
     request.session.flush()
     request.user = AnonymousUser
     return redirect('icecream_bar:index')  # на главную страницу сайта
+
+
+class UserSettingsView(LoginRequiredMixin, TemplateView):
+    template_name = 'registration/update_account.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_info_form'] = UserInfoForm(instance=self.request.user)
+        context['user_password_form'] = UserPasswordForm(self.request.user)
+        context['title'] = f'Изменение профился {self.request.user}'
+        return context
+
+    def post(self, request, *args, **kwargs):
+        if 'user_info_form' in request.POST:
+            form = UserInfoForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                # messages.success(request, 'Данные успешно изменены.')
+                return redirect('icecream_bar:profile')
+            else:
+                context = self.get_context_data(**kwargs)
+                context['user_info_form'] = form
+                return render(request, self.template_name, context)
+        elif 'user_password_form' in request.POST:
+            form = UserPasswordForm(request.user, request.POST)
+            if form.is_valid():
+                form.save()
+                # messages.success(request, 'Пароль успешно изменён.')
+                return self.get(request, *args, **kwargs)
+            else:
+                context = self.get_context_data(**kwargs)
+                context['user_password_form'] = form
+                return render(request, self.template_name, context)
+        else:
+            return self.get(request, *args, **kwargs)
 
 
 # class ProfileDetailView(DetailView):
@@ -98,10 +135,24 @@ class ToppingsListView(ListView):
     context_object_name = 'toppings_list'
 
 
+class AllOrdersListView(ListView):
+    model = IceCreamInContainer
+    template_name = 'icecream_bar/all_orders.html'
+
+    def get_context_data(self):
+        context = super(AllOrdersListView, self).get_context_data()
+        context['orders_list'] = IceCreamInContainer.objects.all()
+        return context
+
+
 class OrdersListView(ListView):
     model = IceCreamInContainer
     template_name = 'icecream_bar/orders_list.html'
-    context_object_name = 'orders_list'
+
+    def get_context_data(self):
+        context = super(OrdersListView, self).get_context_data()
+        context['orders_list'] = IceCreamInContainer.objects.filter(user=self.request.user)
+        return context
 
 
 class OrderCreateView(CreateView):

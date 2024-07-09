@@ -46,7 +46,7 @@ def logout_view(request):
     logout(request)
     request.session.flush()
     request.user = AnonymousUser
-    return redirect('icecream_bar:index')  # на главную страницу сайта
+    return redirect('/')  # на главную страницу сайта
 
 
 class UserSettingsView(LoginRequiredMixin, TemplateView):

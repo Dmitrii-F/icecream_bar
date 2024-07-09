@@ -109,7 +109,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = "icecream_bar:index"
+LOGIN_REDIRECT_URL = "icecream_bar:profile"
 LOGOUT_REDIRECT_URL = "icecream_bar:index"
 
 # Static files (CSS, JavaScript, Images)

@@ -71,7 +71,6 @@ class IceCreamInContainer(models.Model):
         topping = self.topping.name
         return f"Сливочное со вкусами: {flavors} в {self.container.name} с добавкой: {topping}"
 
-
 # class IceCreamAtStick(models.Model):
 #     TYPES = (
 #         ('Ice_Pop', 'Фруктовый лёд'),

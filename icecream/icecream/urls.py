@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 from icecream_bar import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('icecream_bar.urls')),

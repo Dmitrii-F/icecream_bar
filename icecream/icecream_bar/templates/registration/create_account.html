@@ -2,43 +2,47 @@
 
 {% block content %}
 
-<div class="container">
-  <div class="d-flex justify-content-center align-items-center h-100">
-    <div class="col-md-6">
-      <div class="text-center">
-        <h1><br>Регистрация</h1><br>
-      </div>
-        <form method="post">
-          {% csrf_token %}
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-6">
+                <div class="text-center">
+                    <h1><br>Регистрация</h1><br>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
 
-          <div class="row row-cols-2 ">
-            <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.first_name.label_tag }}</div>
-            <div class="col form-outline mb-4">{{ form.first_name }}</div>
+                    <div class="row row-cols-2 ">
+                        <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.first_name.label_tag }}</div>
+                        <div class="col form-outline mb-4">{{ form.first_name }}</div>
 
-            <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.last_name.label_tag }}</div>
-            <div class="col form-outline mb-4">{{ form.last_name}}</div>
+                        <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.last_name.label_tag }}</div>
+                        <div class="col form-outline mb-4">{{ form.last_name }}</div>
 
-            <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.email.label_tag }}</div>
-            <div class="col form-outline mb-4">{{ form.email }}</div>
+                        <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.email.label_tag }}</div>
+                        <div class="col form-outline mb-4">{{ form.email }}</div>
 
-            <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.username.label_tag }}</div>
-            <div class="col form-outline mb-4">{{ form.username }}</div>
+                        <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.username.label_tag }}</div>
+                        <div class="col form-outline mb-4">{{ form.username }}</div>
 
-            <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.password1.label_tag }}</div>
-            <div class="col form-outline mb-4">{{ form.password1 }}</div>
+                        <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.password1.label_tag }}</div>
+                        <div class="col form-outline mb-4">{{ form.password1 }}</div>
 
-            <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.password2.label_tag }}</div>
-            <div class="col form-outline mb-4">{{ form.password2 }}</div>
-          </div>
-          <div class="d-flex justify-content-center">
-            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Зарегистрироваться</button>
-          </div>
+                        <div class="col form-outline mb-4 d-flex justify-content-end">{{ form.password2.label_tag }}</div>
+                        <div class="col form-outline mb-4">{{ form.password2 }}</div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                class="btn btn-dark btn-block mb-4">Зарегистрироваться
+                        </button>
+                    </div>
 
-          <p class="text-center text-muted mt-2 mb-0">Уже есть аккаунт? <a href="{% url 'login' %}" class="fw-bold text-body"><u>Войти здесь</u></a></p>
-        </form>
+                    <p class="text-center text-muted mt-2 mb-0">Уже есть аккаунт? <a href="{% url 'login' %}"
+                                                                                     class="fw-bold text-body"><u>Войти
+                        здесь</u></a></p>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
 {% endblock %}

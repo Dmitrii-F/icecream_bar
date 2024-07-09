@@ -2,44 +2,43 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container full-height">
   <div class="d-flex justify-content-center align-items-center text-center h-100">
     <div class="col-md-4">
-      <div class="text-center">
-        <h1><br>Вход</h1><br>
+      <div class="contact-info text-center">
+        <h1>Вход</h1>
       </div>
 
-<!--        <div class="form-error">{{ form.non_field_errors }}</div>-->
-<!--      {% if form.errors %}-->
-<!--        <p class="text-danger">Имя пользователя или пароль введены неверно</p>-->
-<!--      {% endif %}-->
+      {% if form.errors %}
+        <p class="text-danger">Имя пользователя или пароль введены неверно</p>
+      {% endif %}
 
-<!--      {% if next %}-->
-<!--        {% if user.is_authenticated %}-->
-<!--          <p class="text-danger">Нет доступа к странице. Чтобы продолжить, пожалуйста, авторизуйтесь через аккаунт, имеющий доступ.</p>-->
-<!--        {% else %}-->
-<!--          <p class="text-danger">Пожалуйста, авторизуйтесь, чтобы увидеть страницу</p>-->
-<!--        {% endif %}-->
-<!--      {% endif %}-->
+      {% if next %}
+        {% if user.is_authenticated %}
+          <p class="text-danger">Нет доступа к странице. Чтобы продолжить, пожалуйста, авторизуйтесь через аккаунт, имеющий доступ.</p>
+        {% else %}
+          <p class="text-danger">Пожалуйста, авторизуйтесь, чтобы увидеть страницу</p>
+        {% endif %}
+      {% endif %}
 
-      <form method="post">
+      <form method="post" action="{% url 'icecream_bar:login' %}">
         {% csrf_token %}
 
         <label>Имя пользователя</label>
-        <div class="form-outline mt-1 mb-4">
+        <div class="form-outline mb-4">
           {{ form.username }}
         </div>
 
         <label>{{ form.password.label }}</label>
-        <div class="form-outline mt-1 mb-4">
+        <div class="form-outline mb-4">
           {{ form.password }}
         </div>
 
-        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mt-1 mb-4">Войти</button>
+        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Войти</button>
         <input type="hidden" name="next" value="{{ next }}" />
 
         <div class="text-center">
-          <p>Нет аккаунта? <a href="{% url 'create_account' %}">Зарегистрироваться</a></p>
+          <p>Нет аккаунта? <a href="{% url 'icecream_bar:create_account' %}">Зарегистрироваться</a></p>
         </div>
       </form>
     </div>

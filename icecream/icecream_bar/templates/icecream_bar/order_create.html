@@ -1,112 +1,54 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated %}
+<h2>Сделать заказ</h2>
+
+<!--  <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+    код дальше - полностью аналогичен коду выше-->
+    <form method="post">
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.label_tag }} {{ field }}
+                <p></p>
+        </div>
+        {% endfor %}
+        <button type="submit">Сохранить</button>
+    </form>
+<!-- до сюда-->
+
+
+<!-- content -->
 <div class="container text-center">
-    <h1><br>Сделать заказ<br><br></h1>
-    <div class="row">
-        <div class="col-lg col-md-6 color-order">
-            <p><br></p>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Сохранить</button>
-            </form>
-            <p><br></p>
-        </div>
-        <div class="col-lg-8 col-md-6">
-            <div class="accordion" id="accordionFlushExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    Добавки
-                  </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
-                            <div class="row row-cols-1 row-cols-md-4 g-4">
-                                {% for topping in toppings_list %}
-                                <div class="col">
-                                    <div class="card border-primary border-opacity-50 h-100 ">
-                                      <img src="{{topping.image.url}}" class="card-img-top" >
-                                      <div class="card-body">
-                                        <h5 class="card-title">{{ topping.name }}</h5>
-                                      </div>
-                                    </div>
-                                </div>
-                                {% empty %}
-                                <p>Пусто.</p>
-                                {% endfor %}
-                            </div>
+    <select id="id_select2" >
+        <option data-img_src="https://data.world/api/datadotworld-apps/dataset/python/file/raw/logo.png">Python programming</option>
+        <option data-img_src="https://sdtimes.com/wp-content/uploads/2018/09/Java-logo-490x301.jpg">Java programming</option>
+        <option data-img_src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/783373/1160/772/m1/fpnw/wm0/letter-c-cm-.png?1447712834&s=c2ab07fcddfa8acf10c5a0c40f0578c2">C programming</option>
+    </select>
+<!-- /content -->
+<!-- scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+<script type="text/javascript">
+    function custom_template(obj){
+            var data = $(obj.element).data();
+            var text = $(obj.element).text();
+            if(data && data['img_src']){
+                img_src = data['img_src'];
+                template = $("<div><img src=\"" + img_src + "\" style=\"width:200px;height:150px;\"/><p style=\"font-weight: 700;font-size:14pt;text-align:center;\">" + text + "</p></div>");
+                return template;
+            }
+        }
+    var options = {
+        'templateSelection': custom_template,
+        'templateResult': custom_template,
+    }
+    $('#id_select2').select2(options);
+    $('.select2-container--default .select2-selection--single').css({'height': '220px'});
 
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    Вкусы
-                  </button>
-                </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
-                             <div class="row row-cols-1 row-cols-md-4 g-4">
-                                {% for icecream in ice_creams_list %}
-                                <div class="col">
-                                    <div class="card border-primary border-opacity-50 h-100 px-2 pt-1">
-                                      <img src="{{icecream.image.url}}" class="card-img-top">
-                                      <div class="card-body">
-                                        <h5 class="card-title">{{ icecream.name }}</h5>
-
-                                        <!--  <a href="#" class="btn btn-warning">Купить {{ icecream.price }} руб.</a>  -->
-                                      </div>
-                                    </div>
-                                </div>
-                                {% empty %}
-                                <p>Нет мороженого(.</p>
-                                {% endfor %}
-                            </div>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                    Основы для мороженого
-                  </button>
-                </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
-                             <div class="row row-cols-1 row-cols-md-4 g-4">
-                                {% for container in containers_list %}
-                                <div class="col">
-                                    <div class="card border-primary border-opacity-50 h-100 pt-1">
-                                      <img src="{{container.image.url}}" class="card-img-top" >
-                                      <div class="card-body">
-                                        <h5 class="card-title">{{ container.name }}</h5>
-                                                                                <!--  <a href="#" class="btn btn-warning">Купить {{ container.price }} руб.</a>  -->
-                                      </div>
-                                    </div>
-                                </div>
-                                {% empty %}
-                                <p>Пусто.</p>
-                                {% endfor %}
-                            </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>
+</script>
 </div>
-{% else %}
-    <div class="container">
-      <div class="h-100 d-flex justify-content-center align-items-center text-center">
-        <div class="col-md-6">
-            <h1><br>Для совершения заказа необходимо войти в профиль</h1><br>
-            <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'create_account' %}">Зарегистрироваться</a></p>
-        </div>
-      </div>
-    </div>
-{% endif %}
 {% endblock %}

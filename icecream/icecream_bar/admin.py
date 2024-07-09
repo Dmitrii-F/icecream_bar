@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Flavor, Container, Topping, IceCreamInContainer
+
+from django.contrib import admin
+from .models import (Flavor, Container, Topping, IceCreamInContainer)
 from django.utils.safestring import mark_safe
 
 
@@ -43,7 +45,7 @@ class ToppingAdmin(admin.ModelAdmin):
 
 @admin.register(IceCreamInContainer)
 class IceCreamInContainerAdmin(admin.ModelAdmin):
-    readonly_fields = ('user', 'ordered_at')
+    pass
 
 # @admin.register(IceCreamAtStick)
 # class IceCreamAtStickAdmin(admin.ModelAdmin):

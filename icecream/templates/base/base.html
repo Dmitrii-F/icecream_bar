@@ -8,14 +8,14 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'main.css'%}">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 
     <header>
         <!-- Общий заголовок для всех страниц -->
       <div class="container text-center">
         <div class="row">
             <div class="col">
-                {% include 'base/nav.html' %}
+                {% include 'base/nav.html' only with param='Django'%}
             </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
         {% endblock %}
     </main>
 
-    <footer class="footer mt-auto">
+    <footer>
         <!-- Общий футер для всех страниц -->
         <div class="container text-center">
             <div class="row">

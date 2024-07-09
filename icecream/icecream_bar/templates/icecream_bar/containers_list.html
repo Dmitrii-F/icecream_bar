@@ -13,8 +13,10 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ container.name }}</h5>
                     <p class="card-text">{{ container.description }}</p>
-                    <!--  <a href="#" class="btn btn-warning">Купить {{ container.price }} руб.</a>  -->
                   </div>
+                    <div class="card-footer">
+                        <p>Цена: {{ container.price }} руб.</p>
+                    </div>
                 </div>
             </div>
             {% empty %}

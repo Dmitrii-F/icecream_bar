@@ -3,22 +3,28 @@
 {% block content %}
 {% for group in request.user.groups.all %}
     {% if group.name == 'admins' %}
-        <h1>История заказов</h1>
-        <ul>
+        <div class="container text-center">
+        <h1><br>История заказов<br><br></h1>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
             {% for order in orders_list %}
-                <li>Номер заказа: {{ order.id }}, <br>
+            <div class="col">
+                <div class="card border-secondary h-100 p-1">
+                  Номер заказа: {{ order.id }}, <br>
                     Добавка: {{ order.topping }}, <br>
                     Вкус: {{ order.flavor3 }}, <br>
                     Вкус: {{ order.flavor2 }}, <br>
                     Вкус: {{ order.flavor1 }}, <br>
                     Основа: {{ order.container }}, <br>
                     Стоимость: {{ order.total_price }} руб., <br>
-                    Дата и время заказа: {{ order.ordered_at }} <br>
-                    Пользователь:{{ order.user.first_name }} {{ order.user.last_name }} </li><br>
+                    Дата и время: {{ order.ordered_at }} <br>
+                    Пользователь: {{ order.user.first_name }} {{ order.user.last_name }}<br>
+                </div>
+            </div>
             {% empty %}
-                    <p>Нет заказов.</p>
+            <p>Нет заказов.</p>
             {% endfor %}
-            </ul>
+        </div>
+        </div>
     {% endif %}
 {% endfor %}
 {% endblock %}

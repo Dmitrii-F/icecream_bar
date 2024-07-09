@@ -13,8 +13,10 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ topping.name }}</h5>
                     <p class="card-text">{{ topping.description }}</p>
-                    <!--  <a href="#" class="btn btn-warning">Купить {{ topping.price }} руб.</a>  -->
                   </div>
+                    <div class="card-footer">
+                        <p>Цена: {{ topping.price }} руб.</p>
+                    </div>
                 </div>
             </div>
             {% empty %}

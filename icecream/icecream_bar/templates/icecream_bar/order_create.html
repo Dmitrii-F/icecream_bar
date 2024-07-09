@@ -2,8 +2,8 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container text-center mb-3">
-    <h2><br>Сделать заказ<br><br></h2>
+<div class="container text-center">
+    <h1><br>Сделать заказ<br><br></h1>
     <div class="row">
         <div class="col-lg col-md-6 color-order">
             <p><br></p>
@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                                 {% empty %}
-                                <p>Нет добавок.</p>
+                                <p>Пусто.</p>
                                 {% endfor %}
                             </div>
 
@@ -72,7 +72,7 @@
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingThree">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                    Основы
+                    Основы для мороженого
                   </button>
                 </h2>
                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
                                 {% empty %}
-                                <p>Нет стаканчиков.</p>
+                                <p>Пусто.</p>
                                 {% endfor %}
                             </div>
                   </div>
@@ -98,12 +98,12 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 {% else %}
-    <div class="container full-height">
-      <div class="d-flex justify-content-center align-items-center text-center h-75">
+    <div class="container">
+      <div class="h-100 d-flex justify-content-center align-items-center text-center">
         <div class="col-md-6">
-            <h2>Для совершения заказа необходимо войти в профиль</h2>
+            <h1><br>Для совершения заказа необходимо войти в профиль</h1><br>
             <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'create_account' %}">Зарегистрироваться</a></p>
         </div>
       </div>

@@ -7,13 +7,14 @@
         <ul>
             {% for order in orders_list %}
                 <li>Номер заказа: {{ order.id }}, <br>
+                    Добавка: {{ order.topping }}, <br>
                     Вкус: {{ order.flavor3 }}, <br>
                     Вкус: {{ order.flavor2 }}, <br>
                     Вкус: {{ order.flavor1 }}, <br>
-                    Стаканчик: {{ order.container }}, <br>
-                    Топпинг: {{ order.topping }}, <br>
+                    Основа: {{ order.container }}, <br>
+                    Стоимость: {{ order.total_price }} руб., <br>
                     Дата и время заказа: {{ order.ordered_at }} <br>
-                    Пользователь:{{ order.user.first_name }} {{ order.user.last_name }} <br></li>
+                    Пользователь:{{ order.user.first_name }} {{ order.user.last_name }} </li><br>
             {% empty %}
                     <p>Нет заказов.</p>
             {% endfor %}

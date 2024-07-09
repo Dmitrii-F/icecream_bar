@@ -34,13 +34,13 @@
 .bg {
     background-image: url(image/background_pink.png);
     height: 600px;
-    position:relative;
+    position: relative;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.text{
+.text {
     color: white;
     text-align: center;
     padding: 30px;
@@ -68,17 +68,17 @@
 }
 
 .color-navbar {
-    background-color: 	#ffe0bd;
+    background-color: #ffe0bd;
 }
 
 .color-index {
-    background-color: 	#d6f5ff;
+    background-color: #d6f5ff;
 }
 
-.accordion{
+.accordion {
     --bs-accordion-btn-bg: #fad1c8;
 }
 
 .color-order {
-    background-color: 	#a2c8f2;
+    background-color: #a2c8f2;
 }

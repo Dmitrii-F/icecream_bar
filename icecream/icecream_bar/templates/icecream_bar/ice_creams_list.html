@@ -7,20 +7,17 @@
 
         <div class="row row-cols-1 row-cols-md-4 g-4">
             {% for icecream in ice_creams_list %}
-            <div class="col">
-                <div class="card border-primary border-opacity-50 h-100 pt-1">
-                  <img src="{{icecream.image.url}}" class="card-img-top">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ icecream.name }}</h5>
-                    <p class="card-text">{{ icecream.description }}</p>
-                  </div>
-                    <div class="card-footer">
-                        <p>Цена: {{ icecream.price }} руб.</p>
+                <div class="col">
+                    <div class="card border-primary border-opacity-50 h-100 pt-1">
+                        <img src="{{ icecream.image.url }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ icecream.name }}</h5>
+                            <p class="card-text">{{ icecream.description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% empty %}
-            <p>Нет мороженого(.</p>
+                {% empty %}
+                <p>Нет мороженого(.</p>
             {% endfor %}
         </div>
     </div>

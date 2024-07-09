@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -50,12 +49,18 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('total_price', models.DecimalField(decimal_places=0, max_digits=6, verbose_name='Стоимость')),
                 ('ordered_at', models.DateTimeField(auto_now_add=True)),
-                ('container', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='icecream_bar.container', verbose_name='Основа')),
-                ('flavor1', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='flavor1', to='icecream_bar.flavor', verbose_name='Вкус')),
-                ('flavor2', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='flavor2', to='icecream_bar.flavor', verbose_name='Вкус')),
-                ('flavor3', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='flavor3', to='icecream_bar.flavor', verbose_name='Вкус')),
+                ('container',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='icecream_bar.container',
+                                   verbose_name='Основа')),
+                ('flavor1', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='flavor1',
+                                              to='icecream_bar.flavor', verbose_name='Вкус')),
+                ('flavor2', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='flavor2',
+                                              to='icecream_bar.flavor', verbose_name='Вкус')),
+                ('flavor3', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='flavor3',
+                                              to='icecream_bar.flavor', verbose_name='Вкус')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('topping', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='icecream_bar.topping', verbose_name='Добавка')),
+                ('topping', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='icecream_bar.topping',
+                                              verbose_name='Добавка')),
             ],
         ),
     ]

@@ -2,48 +2,51 @@
 
 {% block content %}
 
-<div class="container">
-  <div class="d-flex justify-content-center align-items-center text-center h-100">
-    <div class="col-md-4">
-      <div class="text-center">
-        <h1><br>Вход</h1><br>
-      </div>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center text-center h-100">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <h1><br>Вход</h1><br>
+                </div>
 
-<!--        <div class="form-error">{{ form.non_field_errors }}</div>-->
-<!--      {% if form.errors %}-->
-<!--        <p class="text-danger">Имя пользователя или пароль введены неверно</p>-->
-<!--      {% endif %}-->
+                <!--        <div class="form-error">{{ form.non_field_errors }}</div>-->
+                <!--      {% if form.errors %}-->
+                    <!--        <p class="text-danger">Имя пользователя или пароль введены неверно</p>-->
+                    <!--      {% endif %}-->
 
-<!--      {% if next %}-->
-<!--        {% if user.is_authenticated %}-->
-<!--          <p class="text-danger">Нет доступа к странице. Чтобы продолжить, пожалуйста, авторизуйтесь через аккаунт, имеющий доступ.</p>-->
-<!--        {% else %}-->
-<!--          <p class="text-danger">Пожалуйста, авторизуйтесь, чтобы увидеть страницу</p>-->
-<!--        {% endif %}-->
-<!--      {% endif %}-->
+                <!--      {% if next %}-->
+                    <!--        {% if user.is_authenticated %}-->
+                        <!--          <p class="text-danger">Нет доступа к странице. Чтобы продолжить, пожалуйста, авторизуйтесь через аккаунт, имеющий доступ.</p>-->
+                        <!--        {% else %}-->
+                        <!--          <p class="text-danger">Пожалуйста, авторизуйтесь, чтобы увидеть страницу</p>-->
+                        <!--        {% endif %}-->
+                    <!--      {% endif %}-->
 
-      <form method="post">
-        {% csrf_token %}
+                <form method="post">
+                    {% csrf_token %}
 
-        <label>Имя пользователя</label>
-        <div class="form-outline mt-1 mb-4">
-          {{ form.username }}
+                    <label>Имя пользователя</label>
+                    <div class="form-outline mt-1 mb-4">
+                        {{ form.username }}
+                    </div>
+
+                    <label>{{ form.password.label }}</label>
+                    <div class="form-outline mt-1 mb-4">
+                        {{ form.password }}
+                    </div>
+
+                    <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                            class="btn btn-dark btn-block mt-1 mb-4">Войти
+                    </button>
+                    <input type="hidden" name="next" value="{{ next }}"/>
+
+                    <div class="text-center">
+                        <p>Нет аккаунта? <a href="{% url 'create_account' %}" class="link-dark">Зарегистрироваться
+                        </a></p>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <label>{{ form.password.label }}</label>
-        <div class="form-outline mt-1 mb-4">
-          {{ form.password }}
-        </div>
-
-        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mt-1 mb-4">Войти</button>
-        <input type="hidden" name="next" value="{{ next }}" />
-
-        <div class="text-center">
-          <p>Нет аккаунта? <a href="{% url 'create_account' %}">Зарегистрироваться</a></p>
-        </div>
-      </form>
     </div>
-  </div>
-</div>
 
 {% endblock %}

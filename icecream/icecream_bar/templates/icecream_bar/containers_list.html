@@ -7,20 +7,17 @@
 
         <div class="row row-cols-1 row-cols-md-4 g-4">
             {% for container in containers_list %}
-            <div class="col">
-                <div class="card border-primary border-opacity-50 h-100 pt-1">
-                  <img src="{{container.image.url}}" class="card-img-top" >
-                  <div class="card-body">
-                    <h5 class="card-title">{{ container.name }}</h5>
-                    <p class="card-text">{{ container.description }}</p>
-                  </div>
-                    <div class="card-footer">
-                        <p>Цена: {{ container.price }} руб.</p>
+                <div class="col">
+                    <div class="card border-primary border-opacity-50 h-100 pt-1">
+                        <img src="{{ container.image.url }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ container.name }}</h5>
+                            <p class="card-text">{{ container.description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% empty %}
-            <p>Пусто.</p>
+                {% empty %}
+                <p>Пусто.</p>
             {% endfor %}
         </div>
     </div>

@@ -8,7 +8,7 @@
                 <h2>Настройки профиля {{ user }}</h2>
             </div>
             <div class="col-lg-2 col-sm-12 text-right">
-                <a class="btn btn-primary my-btn h-100"
+                <a class="btn btn-dark my-btn h-100"
                    href="{% url 'icecream_bar:profile' %}">Вернуться в профиль</a>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ user_info_form.as_p }}
-                    <button class="btn btn-primary my-btn mt-2" type="submit" name="user_info_form">Отправить</button>
+                    <button class="btn btn-dark my-btn mt-2" type="submit" name="user_info_form">Отправить</button>
                 </form>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -36,7 +36,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ user_password_form.as_p }}
-                    <button class="btn btn-primary my-btn mt-2" type="submit" name="user_password_form">Отправить
+                    <button class="btn btn-dark my-btn mt-2" type="submit" name="user_password_form">Отправить
                     </button>
                 </form>
             </div>

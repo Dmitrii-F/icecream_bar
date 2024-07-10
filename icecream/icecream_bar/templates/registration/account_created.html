@@ -2,14 +2,20 @@
 
 {% block content %}
 
-    <div class="container full-height">
-        <div class="d-flex justify-content-center align-items-center text-center h-75">
-            <div class="col-md-6">
-                <h2>Завершение регистрации</h2>
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center text-center h-100">
+        <div class="col-md-4">
+            <div class="text-center">
+                <h2><br>Завершение регистрации</h2><br>
                 <p>Аккаунт успешно зарегистрирован!</p>
+                <p><a href="{% url 'icecream_bar:profile' %}">Перейти в профиль</a></p>
                 <p><a href="{% url 'icecream_bar:order_create' %}">Сделать заказ</a></p>
             </div>
+
         </div>
     </div>
+</div>
+
+
 
 {% endblock %}

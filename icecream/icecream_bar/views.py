@@ -56,7 +56,7 @@ class UserSettingsView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['user_info_form'] = UserInfoForm(instance=self.request.user)
         context['user_password_form'] = UserPasswordForm(self.request.user)
-        context['title'] = f'Изменение профился {self.request.user}'
+        context['title'] = f'Изменение профиля {self.request.user}'
         return context
 
     def post(self, request, *args, **kwargs):

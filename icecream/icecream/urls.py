@@ -24,6 +24,8 @@ urlpatterns = [
     path('', include('icecream_bar.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('registration/', views.create_account, name='create_account'),
-    path('logout/', views.logout_view, name='logout')
+    path('logout/', views.logout_view, name='logout'),
+    path('login/', views.CustomLoginView.as_view(), name='login'),
+
 
 ]

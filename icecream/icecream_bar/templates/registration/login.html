@@ -27,18 +27,20 @@
                     <!--{% endif %}-->
                 <form method="post">
                     {% csrf_token %}
-                    <label>Имя пользователя</label>
-                    <div class="form-outline mt-1 mb-4">{{ form.username }}</div>
-                    <label>{{ form.password.label }}</label>
-                    <div class="form-outline mt-1 mb-4">{{ form.password }}</div>
-                    <button type="submit"
-                            data-mdb-button-init
-                            data-mdb-ripple-init
-                            class="btn btn-dark btn-block btn-lg mt-1 mb-4">Войти
-                    </button>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    {% for field in form %}
+                        <p class="form-label">{{ field.label }}</p>
+                        <p>{{ field }}</p>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-dark">Войти</button>
+                </form>
                     <input type="hidden" name="next" value="{{ next }}"/>
                     <div class="text-center">
-                        <p>
+                        <br><p>
                             Нет аккаунта?
                             <a href="{% url 'create_account' %}" class="link-dark">
                                 Зарегистрироваться</a>

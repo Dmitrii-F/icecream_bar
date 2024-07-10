@@ -1,12 +1,13 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import AnonymousUser, Group
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, TemplateView, CreateView
 
-from .forms import FeedbackForm, SignUpForm, IceCreamInContainerForm, UserInfoForm, UserPasswordForm
+from .forms import FeedbackForm, SignUpForm, IceCreamInContainerForm, UserInfoForm, UserPasswordForm, LoginForm
 from .models import IceCreamInContainer, Flavor, Container, Topping
 
 
@@ -35,6 +36,15 @@ def create_account(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/create_account.html', {'form': form})
+
+
+class CustomLoginView(LoginView):
+    authentication_form = LoginForm
+    template_name = 'registration/login.html'
+    extra_context = {'title': 'Авторизация на сайте'}
+
+    def get_success_url(self):
+        return reverse_lazy('icecream_bar:profile')
 
 
 def logout_view(request):

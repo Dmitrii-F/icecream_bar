@@ -1,28 +1,32 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-
-<div class="mask d-flex align-items-center h-100 gradient-custom-3">
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card-body p-5">
-            <div class="text-center">
-                    <h1>Регистрация</h1>
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card-body p-5">
+                        <div class="text-center">
+                            <h1>Регистрация</h1>
+                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="d-flex justify-content-center">
+                                <button type="submit"
+                                        class="btn btn-success btn-block
+                                        btn-lg btn-dark gradient-custom-4">
+                                    Зарегистрироваться
+                                </button>
+                            </div>
+                            <p class="text-center text-muted mt-4 mb-0">
+                                Уже есть аккаунт? <a href="{% url 'login' %}" class="fw-bold
+                                text-body"><u>Войти здесь</u></a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form method="post">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn-block btn-lg btn-dark gradient-custom-4">Зарегистрироваться</button>
-              </div>
-              <p class="text-center text-muted mt-4 mb-0">Уже есть аккаунт? <a href="{% url 'login' %}" class="fw-bold text-body"><u>Войти здесь</u></a></p>
-            </form>
-          </div>
-      </div>
+        </div>
     </div>
-  </div>
-</div>
-
-
 {% endblock %}

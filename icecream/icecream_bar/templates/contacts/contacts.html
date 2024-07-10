@@ -2,9 +2,13 @@
 
 {% block content %}
     <div class="container text-center">
-        <h1><br>Контакты</h1>
+        <h1>
+            <br>
+            Контакты
+        </h1>
         <div class="contact-info">
-            <b>«Liz'zard Cafe»</b> - это уютное кафе-мороженое, где каждый посетитель может насладиться разнообразными
+            <b>«Liz'zard Cafe»</b> - это уютное кафе-мороженое, где каждый посетитель может
+            насладиться разнообразными
             десертами и уникальной атмосферой.
         </div>
 
@@ -22,8 +26,8 @@
                 <div class="col-sm-8">
                     <div class="map">
                         <iframe class="responsive-iframe"
-                                src="https://yandex.ru/map-widget/v1/?um=constructor%3Af9307f8487dc79b3399ad9965d22fde8b571d4bda7daa9ba94c779bd33f0c2c6&amp;source=constructor"
-                                ></iframe>
+                                src="https://yandex.ru/map-widget/v1/?um=constructor%3Af9307f8487dc79b3399ad9965d22fde8b571d4bda7daa9ba94c779bd33f0c2c6&amp;
+                                source=constructor"></iframe>
                     </div>
                 </div>
                 <div class="col-sm-4 d-flex flex-column align-items-center">
@@ -33,22 +37,30 @@
                     <span>Мы будем благодарны Вам, если вы оставите свой отзыв на </span>
                     <b>info@example.com</b>
                     <div class="contact-info">
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">
-                            Напишите нам
-                        </button>
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <button type="button"
+                                class="btn btn-dark"
+                                data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">Напишите нам</button>
+                        <div class="modal fade"
+                             id="staticBackdrop"
+                             data-bs-backdrop="static"
+                             data-bs-keyboard="false"
+                             tabindex="-1"
+                             aria-labelledby="staticBackdropLabel"
+                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Связаться с нами</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <h1 class="modal-title fs-5"
+                                            id="staticBackdropLabel">Связаться с нами</h1>
+                                        <button type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <span>Напишите нам на </span>
-                                        <b>info@example.com</b>
+                                        <b><a href="/contacts/feedback/">info@example.com</a></b>
                                     </div>
                                 </div>
                             </div>

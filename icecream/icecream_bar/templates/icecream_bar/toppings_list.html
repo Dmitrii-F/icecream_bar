@@ -3,9 +3,13 @@
 {% block content %}
 
     <div class="container text-center">
-        <h1><br>Добавки к мороженому<br><br></h1>
-
-        <div class="row row-cols-1 row-cols-md-4 g-4">
+        <h1>
+            <br>
+            Добавки к мороженому
+            <br>
+            <br>
+        </h1>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-4">
             {% for topping in toppings_list %}
                 <div class="col">
                     <div class="card border-primary border-opacity-50 h-100 ">

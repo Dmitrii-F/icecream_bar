@@ -113,7 +113,7 @@ def contacts(request):
 
 
 class IndexView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         return render(request, 'icecream_bar/index.html')
 
 
@@ -140,7 +140,7 @@ class AllOrdersListView(ListView):
     template_name = 'icecream_bar/all_orders.html'
 
     def get_context_data(self):
-        context = super(AllOrdersListView, self).get_context_data()
+        context = super().get_context_data()
         context['orders_list'] = IceCreamInContainer.objects.all()
         return context
 
@@ -150,7 +150,7 @@ class OrdersListView(ListView):
     template_name = 'icecream_bar/orders_list.html'
 
     def get_context_data(self):
-        context = super(OrdersListView, self).get_context_data()
+        context = super().get_context_data()
         context['orders_list'] = IceCreamInContainer.objects.filter(user=self.request.user)
         return context
 

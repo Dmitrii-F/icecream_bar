@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+
 from .models import Flavor, Container, Topping, IceCreamInContainer
 
 
@@ -7,7 +8,6 @@ from .models import Flavor, Container, Topping, IceCreamInContainer
 class FlavorAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description')
     ordering = ('name',)
-    # Добвлять для изображения
     readonly_fields = ('get_image',)
 
     def get_image(self, obj):
@@ -43,30 +43,5 @@ class ToppingAdmin(admin.ModelAdmin):
 
 @admin.register(IceCreamInContainer)
 class IceCreamInContainerAdmin(admin.ModelAdmin):
-    readonly_fields = ('user', 'ordered_at')
-
-# @admin.register(IceCreamAtStick)
-# class IceCreamAtStickAdmin(admin.ModelAdmin):
-#     pass
-#
-#
-# @admin.register(Drink)
-# class DrinkAdmin(admin.ModelAdmin):
-#     pass
-#
-#
-# @admin.register(Item)
-# class ItemAdmin(admin.ModelAdmin):
-#     pass
-#
-#
-# @admin.register(Cart)
-# class CartAdmin(admin.ModelAdmin):
-#     def save_model(self, request, obj, form, change):
-#         super().save_model(request, obj, form, change)
-#         obj.calculate_total_price()
-#
-#
-# @admin.register(Order)
-# class OrderAdmin(admin.ModelAdmin):
-#     pass
+    readonly_fields = ('total_price', 'topping', 'flavor3', 'flavor2', 'flavor1', 'container',
+                       'user', 'ordered_at')

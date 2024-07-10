@@ -1,15 +1,13 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User, AnonymousUser, Group
-from django.core.checks import messages
-from django.http import Http404, HttpResponseForbidden
-from django.views import View
-from django.views.generic import ListView, TemplateView, CreateView, DetailView
-from .models import IceCreamInContainer, Flavor, Container, Topping
-from django.shortcuts import render, redirect, get_object_or_404
-from .forms import FeedbackForm, SignUpForm, IceCreamInContainerForm, UserInfoForm, UserPasswordForm
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import AnonymousUser, Group
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic import ListView, TemplateView, CreateView
+
+from .forms import FeedbackForm, SignUpForm, IceCreamInContainerForm, UserInfoForm, UserPasswordForm
+from .models import IceCreamInContainer, Flavor, Container, Topping
 
 
 def feedback_view(request):
@@ -28,9 +26,6 @@ def create_account(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Profile.objects.create(user=user,
-            #                        phone_number=form.cleaned_data.get('phone_number'),
-            #                        address=form.cleaned_data.get('address'))
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             g = Group.objects.get(name='clients')
@@ -84,28 +79,8 @@ class UserSettingsView(LoginRequiredMixin, TemplateView):
             return self.get(request, *args, **kwargs)
 
 
-# class ProfileDetailView(DetailView):
-#     model = User
-#     pk_url_kwarg = 'id'
-#     template_name = 'registration/profile.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = f'Страница пользователя: {self.object.user.username}'
-#         return context
-
 class UserProfileView(TemplateView):
     template_name = 'registration/profile.html'
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     try:
-    #         user = get_object_or_404(User, username=self.kwargs.get('username'))
-    #     except User.DoesNotExist:
-    #         raise Http404("Пользователь не найден")
-    #     context['user_profile'] = user
-    #     context['title'] = f'Профиль пользователя {user}'
-    #     return context
 
 
 def contacts(request):
@@ -166,7 +141,7 @@ class OrderCreateView(CreateView):
         return super().form_valid(form)
 
     def get_context_data(self):
-        context = super(OrderCreateView, self).get_context_data()
+        context = super().get_context_data()
         context['toppings_list'] = Topping.objects.all()
         context['ice_creams_list'] = Flavor.objects.all()
         context['containers_list'] = Container.objects.all()

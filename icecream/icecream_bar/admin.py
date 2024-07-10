@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Flavor, Container, Topping, IceCreamInContainer
 from django.utils.safestring import mark_safe
+from .models import Flavor, Container, Topping, IceCreamInContainer
 
 
 @admin.register(Flavor)

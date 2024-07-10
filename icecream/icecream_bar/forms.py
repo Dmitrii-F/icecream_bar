@@ -1,9 +1,9 @@
 from django import forms
 from django.contrib.auth import password_validation
 from django.forms import ModelForm
-from .models import IceCreamInContainer, Container, Topping
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
+from .models import IceCreamInContainer, Container, Topping
 
 
 class FeedbackForm(forms.Form):
@@ -29,11 +29,6 @@ class ToppingForm(ModelForm):
         model = Topping
         fields = ['name', 'description']
 
-
-# class OrderForm(forms.ModelForm):
-#     class Meta:
-#         model = Order
-#         fields = ['user', 'status']
 
 class UserInfoForm(forms.ModelForm):
     username = forms.CharField(
@@ -163,24 +158,3 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
-# class SignUpForm(UserCreationForm):
-#     phone_number = forms.CharField(
-#         max_length=15,
-#         help_text='Укажите номер телефона. Пример: +7-123-456-7890',
-#         label='Номер телефона'
-#     )
-#     password1 = forms.CharField(
-#         label='Пароль',
-#         strip=False,
-#         widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
-#         help_text='Пароль должен состоять из латинских букв и цифр...',
-#     )
-#     address = forms.CharField(
-#         max_length=200,
-#         help_text='Введите адрес для доставки',
-#         label='Адрес'
-#     )
-#
-#     class Meta:
-#         model = User
-#         fields = ['username', 'phone_number', 'password1', 'password2', 'address']

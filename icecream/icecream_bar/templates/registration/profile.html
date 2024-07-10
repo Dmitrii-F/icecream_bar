@@ -2,32 +2,47 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-    <div class="text-center">
-        <h1><br>Профиль клиента</h1><br>
-        <p>Логин: {{ user.username }}</p>
-        <p>Имя: {{ user.first_name }}</p>
-        <p>Фамилия: {{ user.last_name }}</p>
-        <p>Электронная почта: {{ user.email }}</p>
-        <p>Дата регистрации: {{ user.date_joined }}</p>
-        {% for group in request.user.groups.all %}
-            {% if group.name == 'clients' %}
-                <p><a href="{% url 'icecream_bar:orders' %}" class="link-dark">История заказов</a></p>
-            {% endif %}
-            {% if group.name == 'admins' %}
-                <p><a href="{% url 'icecream_bar:all_orders' %} " class="link-dark">Посмотреть все заказы пользователей
-                </a></p>
-            {% endif %}
-        {% endfor %}
-        <p><a href="{% url 'icecream_bar:change_profile' %}" class="link-dark">Изменить аккаунт</a></p>
-        <a href="{% url 'logout' %}" class="link-dark">Выйти из аккаунта</a>
-    </div>
+        <div class="text-center">
+            <h1><br>Профиль клиента</h1><br>
+            <p>Логин: {{ user.username }}</p>
+            <p>Имя: {{ user.first_name }}</p>
+            <p>Фамилия: {{ user.last_name }}</p>
+            <p>Электронная почта: {{ user.email }}</p>
+            <p>Дата регистрации: {{ user.date_joined }}</p>
+            {% for group in request.user.groups.all %}
+                {% if group.name == 'clients' %}
+                    <p>
+                        <a href="{% url 'icecream_bar:orders' %}" class="link-dark">История
+                        заказов</a>
+                    </p>
+                {% endif %}
+                {% if group.name == 'admins' %}
+                    <p>
+                        <a href="{% url 'icecream_bar:all_orders' %} " class="link-dark">Посмотреть
+                        все заказы пользователей</a>
+                    </p>
+                {% endif %}
+            {% endfor %}
+            <p>
+                <a href="{% url 'icecream_bar:change_profile' %}" class="link-dark">Изменить
+                аккаунт</a>
+            </p>
+            <a href="{% url 'logout' %}" class="link-dark">Выйти из аккаунта</a>
+        </div>
     {% else %}
         <div class="container">
             <div class="h-100 d-flex justify-content-center align-items-center text-center">
                 <div class="col-md-6">
-                    <h1><br>Вы не вошли в аккаунт</h1><br>
-                    <p><a href="{% url 'login' %}" class="link-dark">Войти</a> | <a
-                            href="{% url 'create_account' %}" class="link-dark">Зарегистрироваться</a></p>
+                    <h1>
+                        <br>
+                        Вы не вошли в аккаунт
+                    </h1>
+                    <br>
+                    <p>
+                        <a href="{% url 'login' %}" class="link-dark">Войти</a> |
+                        <a href="{% url 'create_account' %}"
+                           class="link-dark">Зарегистрироваться</a>
+                    </p>
                 </div>
             </div>
         </div>

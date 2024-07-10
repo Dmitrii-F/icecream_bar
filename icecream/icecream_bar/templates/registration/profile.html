@@ -13,19 +13,19 @@
                 {% if group.name == 'clients' %}
                     <p>
                         <a href="{% url 'icecream_bar:orders' %}" class="link-dark">История
-                        заказов</a>
+                            заказов</a>
                     </p>
                 {% endif %}
                 {% if group.name == 'admins' %}
                     <p>
                         <a href="{% url 'icecream_bar:all_orders' %} " class="link-dark">Посмотреть
-                        все заказы пользователей</a>
+                            все заказы пользователей</a>
                     </p>
                 {% endif %}
             {% endfor %}
             <p>
                 <a href="{% url 'icecream_bar:change_profile' %}" class="link-dark">Изменить
-                аккаунт</a>
+                    аккаунт</a>
             </p>
             <a href="{% url 'logout' %}" class="link-dark">Выйти из аккаунта</a>
         </div>
